@@ -9,6 +9,7 @@ func main() {
 
 	var fizzBuzz string
 
+	// fizzbuzz for 1 to 100
 	for i := 0; i <= 100; i++ {
 		fizzBuzz = checkFizzBuzz(i)
 		fmt.Println(fizzBuzz)
