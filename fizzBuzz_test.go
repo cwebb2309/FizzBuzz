@@ -4,46 +4,20 @@ import (
 	"testing"
 )
 
-func TestFizz(t *testing.T) {
-
-	var rst string
-	rst = checkFizzBuzz(99)
-
-	if rst != "fizz" {
-		t.Error("Should return fizz")
-	}
-
+type fizzBuzzTest struct {
+	n        int
+	expected string
 }
 
-func TestBuzz(t *testing.T) {
-
-	var rst string
-	rst = checkFizzBuzz(25)
-
-	if rst != "buzz" {
-		t.Error("Should return buzz")
-	}
-
+var fizzBuzzTests = []fizzBuzzTest{
+	{99, "fizz"}, {25, "buzz"}, {60, "fizzbuzz"}, {8, "8"},
 }
 
-func TestFizzBuzz(t *testing.T) {
-
-	var rst string
-	rst = checkFizzBuzz(60)
-
-	if rst != "fizzbuzz" {
-		t.Error("Should return fizzbuzz")
+func TestCheckFizzBuzz(t *testing.T) {
+	for _, tt := range fizzBuzzTests {
+		actual := checkFizzBuzz(tt.n)
+		if actual != tt.expected {
+			t.Errorf("Fib(%d): expected %s, actual %s", tt.n, tt.expected, actual)
+		}
 	}
-
-}
-
-func TestDigit(t *testing.T) {
-
-	var rst string
-	rst = checkFizzBuzz(8)
-
-	if rst != "8" {
-		t.Error("Should return 8")
-	}
-
 }
